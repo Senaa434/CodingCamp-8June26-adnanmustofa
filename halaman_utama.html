@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense & Budget Visualizer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>AturDuit 🪙</h1>
+        <nav aria-label="Menu Pengaturan">
+            <button id="theme-toggle" class="btn-secondary">Switch Mode</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <div class="dashboard-grid">
+            
+            <section class="card" aria-labelledby="budget-heading">
+                <h2 id="budget-heading">Set Anggaran Bulanan</h2>
+                <div class="form-group">
+                    <label style="display:none" for="budget-input">Nominal Anggaran</label>
+                    <input type="number" id="budget-input" placeholder="Contoh: 5000000">
+                    <button id="save-budget-btn" class="btn-primary">Simpan Anggaran</button>
+                </div>
+                
+                <article class="budget-status">
+                    <p>Total Anggaran: <span id="budget-display">Rp 0</span></p>
+                    <p>Sisa Anggaran: <span id="remaining-display">Rp 0</span></p>
+                    <div class="progress-bar-container" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="progress-container">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+                    <p id="warning-message" class="warning-text hidden" role="alert">Peringatan: Pengeluaran melebihi batas anggaran!</p>
+                </article>
+            </section>
+
+            <section class="card" aria-labelledby="category-heading">
+                <h2 id="category-heading">Tambah Kategori Kustom</h2>
+                <div class="form-group">
+                    <label style="display:none" for="category-input">Nama Kategori Baru</label>
+                    <input type="text" id="category-input" placeholder="Nama kategori baru...">
+                    <button id="add-category-btn" class="btn-secondary">+ Tambah</button>
+                </div>
+            </section>
+            
+        </div>
+
+        <section class="card standard-margin" aria-labelledby="transaction-heading">
+            <h2 id="transaction-heading">Tambah Transaksi Baru</h2>
+            <form id="expense-form" class="expense-form">
+                <div>
+                    <label style="display:none" for="expense-title">Nama Pengeluaran</label>
+                    <input type="text" id="expense-title" placeholder="Nama Pengeluaran (cth: Beli Kopi)" required>
+                </div>
+                <div>
+                    <label style="display:none" for="expense-amount">Jumlah Pengeluaran</label>
+                    <input type="number" id="expense-amount" placeholder="Jumlah (Rp)" required>
+                </div>
+                <div>
+                    <label style="display:none" for="expense-category">Pilih Kategori</label>
+                    <select id="expense-category">
+                        </select>
+                </div>
+                <button type="submit" class="btn-primary">Tambah Pengeluaran</button>
+            </form>
+        </section>
+
+        <section class="card standard-margin" aria-labelledby="history-heading">
+            <header class="list-header">
+                <h2 id="history-heading">Riwayat Pengeluaran</h2>
+                <aside class="filters" aria-label="Sortir Transaksi">
+                    <label style="display:none" for="sort-select">Urutkan Berdasarkan</label>
+                    <select id="sort-select">
+                        <option value="latest">Terbaru</option>
+                        <option value="amount-high">Nominal Tertinggi</option>
+                        <option value="amount-low">Nominal Terendah</option>
+                    </select>
+                </aside>
+            </header>
+            
+            <ul id="expense-list" class="expense-list">
+                </ul>
+        </section>
+        
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
